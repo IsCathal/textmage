@@ -30,13 +30,13 @@ app.post('/dream', async (req, res) => {
 
     const  prompt  = req.body.prompt;
 
-    const aiResponse = await openai.createImage({
-      promt,
+    const aiResponse = await openai.images.generate({
+      prompt,
       n:1,
-      size: '1080x1080',
+      size: '1024x1024',
     });
-
-    const image = aiResponse.data.data[0].url;
+    console.log(aiResponse);
+    const image = aiResponse.data.url;
     res.send({ image });
 });
 
