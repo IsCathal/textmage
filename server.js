@@ -21,7 +21,7 @@ import express from 'express';
 import cors from 'cors';
 
 const app = express();
-app.use
+app.use(cors());
 app.use(express.json());    //middleware to parse json data
 
 //takes 2 arguments, first is the origin of the request, second is the options
@@ -40,4 +40,4 @@ app.post('/dream', async (req, res) => {
     res.send({ image });
 });
 
-app.listen(8080, () => console.log('Server is running on port 3000'));
+app.listen(8080, () => console.log('Server is running on port 8080'));
