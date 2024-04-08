@@ -28,6 +28,8 @@ app.use(express.json());    //middleware to parse json data
 //async function is a function that returns a promise
 app.post('/dream', async (req, res) => {
 
+  try{
+
     const  prompt  = req.body.prompt;
 
     const aiResponse = await openai.images.generate({
@@ -38,6 +40,10 @@ app.post('/dream', async (req, res) => {
     console.log(aiResponse);
     const image = aiResponse.data.url;
     res.send({ image });
+  } catch (error) { 
+    console.error(error);
+    res.status(500).send({ error: error.message || 'Something went wrong' });
+  }
 });
 
 app.listen(8080, () => console.log('Server is running on port 8080'));

@@ -16,13 +16,22 @@ form.addEventListener('submit', async (e) => {
         prompt: data.get('prompt'),
       }),
     });
+
+  
 console.log(response);
+
+if (response.ok) {
     const { image } = await response.json();
 
     const result = document.querySelector('#result');
     result.innerHTML = `<img src="${image}" width="512" />`;
+} else {
 
+    const { error } = await response.json();
+    alert(error);
+    console.error(error);
     hideSpinner();
+}
 });
 
 function showSpinner() {
