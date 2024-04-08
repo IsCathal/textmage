@@ -37,9 +37,10 @@ app.post('/dream', async (req, res) => {
       n:1,
       size: '1024x1024',
     });
-    console.log(aiResponse);
-    const image = aiResponse.data.url;
-    res.send({ image });
+
+
+    const image = aiResponse.image;
+     res.send({ image });
   } catch (error) { 
     console.error(error);
     res.status(500).send({ error: error.message || 'Something went wrong' });

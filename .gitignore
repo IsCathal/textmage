@@ -1,4 +1,6 @@
 .env
+eslint.config.js
+.eslintrc.json
 
 # Logs
 logs
